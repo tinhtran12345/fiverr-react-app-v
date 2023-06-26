@@ -5,10 +5,12 @@ import {
     Gig,
     Gigs,
     Home,
+    Login,
     Message,
     Messages,
     MyGigs,
     Orders,
+    Register,
 } from "./pages";
 
 function App() {
@@ -57,6 +59,14 @@ function App() {
                 {
                     path: "/message/:id",
                     element: <Message />,
+                },
+                {
+                    path: "/login",
+                    element: <Login />,
+                },
+                {
+                    path: "/register",
+                    element: <Register />,
                 },
             ],
         },

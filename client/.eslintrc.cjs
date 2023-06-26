@@ -1,5 +1,5 @@
 module.exports = {
-    env: { browser: true, es2020: true },
+    env: { browser: true, es2020: true, BASE_URL: "http://localhost:8800/api" },
     extends: [
         "eslint:recommended",
         "plugin:react/recommended",

@@ -61,8 +61,24 @@
                     font-weight: 500;
                 }
             }
+            .btn {
+                color: black;
+                font-size: 14px;
+                font-weight: 700;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: 1px solid black;
+                cursor: pointer;
+                background-color: transparent;
+                &:hover {
+                    background-color: #1dbf73;
+                    border-color: #1dbf73;
+                    color: white;
+                }
+            }
             button {
                 color: white;
+                font-weight: 700;
                 padding: 10px 20px;
                 border-radius: 5px;
                 border: 1px solid white;

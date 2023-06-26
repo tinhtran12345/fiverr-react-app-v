@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import "./Navbar.scss";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { categories } from "../../utils/data";
+import axiosConfig from "../../apiConfig/axiosConfig";
 const Navbar = () => {
     const { pathname } = useLocation();
+    const navigate = useNavigate();
     const [active, setActive] = useState(false);
     const [open, setOpen] = useState(false);
+
     const isActive = () => {
         window.scrollY > 0 ? setActive(true) : setActive(false);
     };
@@ -14,10 +17,16 @@ const Navbar = () => {
         return () => window.removeEventListener("scroll", isActive);
     }, []);
 
-    const currentUser = {
-        id: 1,
-        username: "Alice",
-        isSeller: true,
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"))?.info;
+
+    const handleLogout = async () => {
+        try {
+            await axiosConfig.post("/auth/logout");
+            localStorage.setItem("currentUser", null);
+            navigate("/");
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
@@ -35,12 +44,21 @@ const Navbar = () => {
                     <span>Fiverr Business</span>
                     <span>Explore</span>
                     <span>English</span>
-                    <span>Sign in</span>
+                    {/* <span>Sign in</span> */}
                     {!currentUser?.isSeller && <span>Become a Seller</span>}
-                    {!currentUser && <button>Join</button>}
-                    {currentUser && (
+                    {/* {!currentUser && (
+                        <button
+                            className={active || pathname !== "/" ? "btn" : ""}
+                        >
+                            Join
+                        </button>
+                    )} */}
+                    {currentUser ? (
                         <div className="user" onClick={() => setOpen(!open)}>
-                            <img src="" alt="" />
+                            <img
+                                src={currentUser?.img || "/images/noavatar.jpg"}
+                                alt="avatar"
+                            />
                             <span>{currentUser?.username}</span>
                             {open && (
                                 <div className="options">
@@ -63,16 +81,34 @@ const Navbar = () => {
                                     <Link className="link" to={"/messages"}>
                                         Messages
                                     </Link>
-                                    <Link className="link" to={"/"}>
+                                    <Link
+                                        className="link"
+                                        onClick={handleLogout}
+                                    >
                                         Logout
                                     </Link>
                                 </div>
                             )}
                         </div>
+                    ) : (
+                        <>
+                            <Link to="/login" className="link">
+                                Sign in
+                            </Link>
+                            <Link className="link" to="/register">
+                                <button
+                                    className={
+                                        active || pathname !== "/" ? "btn" : ""
+                                    }
+                                >
+                                    Join
+                                </button>
+                            </Link>
+                        </>
                     )}
                 </div>
             </div>
-            {active && (
+            {(active || pathname !== "/") && (
                 <>
                     <hr />
                     <div className="menu">
