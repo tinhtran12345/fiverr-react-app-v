@@ -10,7 +10,18 @@
         .breadcrumbs {
             font-weight: 300;
             font-size: 13px;
-            color: #555;
+            color: #4b4848;
+            span {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+                .highlight {
+                    font-size: 18px;
+                    font-weight: 600;
+                    color: black;
+                }
+            }
         }
         p {
             color: #999;

@@ -28,3 +28,17 @@ export const deleteUser = async (req, res) => {
             .send("Something went wrong at delete controller ", error);
     }
 };
+
+export const getUser = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+        return res.status(200).send({
+            err: 0,
+            res: user,
+        });
+    } catch (error) {
+        return res
+            .status(500)
+            .send("Something went wrong at getUser controller ", error);
+    }
+};

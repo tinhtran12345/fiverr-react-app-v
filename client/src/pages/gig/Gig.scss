@@ -23,6 +23,17 @@
                 text-transform: uppercase;
                 font-size: 13px;
                 color: #555;
+                span {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 10px;
+                    .highlight {
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: black;
+                    }
+                }
             }
             .slide {
                 margin: 10px;
@@ -306,6 +317,7 @@
             }
 
             button {
+                width: 100%;
                 background-color: #1dbf73;
                 padding: 10px;
                 color: white;
