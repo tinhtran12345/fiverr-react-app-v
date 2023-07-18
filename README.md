@@ -1,3 +1,9 @@
-Link youtube: https://www.youtube.com/watch?v=KI5CnJ9u5ok&list=PLj-4DlPRT48noaQLZ5UYYYq4PQVCdn8FY&ab_channel=LamaDev
+## Một số tính năng cơ bản
 
-SchemaDB = https://drawsql.app/teams/dev-life/diagrams/fiverr-reactjs
+-   Login, Register, Authentication,...
+
+-   Search, show detail product,...
+
+-   Chat with owner
+
+## SchemaDB = https://drawsql.app/teams/dev-life/diagrams/fiverr-reactjs
