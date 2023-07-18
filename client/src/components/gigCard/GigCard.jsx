@@ -30,13 +30,14 @@ const GigCard = ({ item }) => {
                             <span>{data.res?.username}</span>
                         </div>
                     )}
-                    <p>{item.desc}</p>
+                    <p>{item.desc.slice(0, 100)} ...</p>
                     <div className="star">
                         <img src="/images/star.png" alt="star" />
                         <span>
-                            {" "}
+                            {/* {" "}
                             {!isNaN(item.totalStars / item.starNumber) &&
-                                Math.round(item.totalStars / item.starNumber)}
+                                Math.round(item.totalStars / item.starNumber)} */}
+                            {item?.totalStars} ({item?.starNumber})
                         </span>
                     </div>
                 </div>

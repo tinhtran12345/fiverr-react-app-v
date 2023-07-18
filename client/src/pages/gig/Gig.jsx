@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Slide } from "../../components";
+import { Reviews, Slide } from "../../components";
 import "./Gig.scss";
 import { useQuery } from "@tanstack/react-query";
 import axiosConfig from "../../apiConfig/axiosConfig";
@@ -425,27 +425,18 @@ const Gig = () => {
                                     alt=""
                                 />
                                 <span>{dataUser.username}</span>
-                                {!isNaN(
-                                    data?.res.totalStars / data?.res.starNumber
-                                ) && (
-                                    <div className="stars">
-                                        {Array(5)
-                                            .fill()
-                                            .map((item, i) => (
-                                                <img
-                                                    src="/images/star.png"
-                                                    alt=""
-                                                    key={i}
-                                                />
-                                            ))}
-                                        <span>
-                                            {Math.round(
-                                                data?.res.totalStars /
-                                                    data?.res.starNumber
-                                            )}
-                                        </span>
-                                    </div>
-                                )}
+                                <div className="stars">
+                                    {Array(data?.res.totalStars)
+                                        .fill()
+                                        .map((item, i) => (
+                                            <img
+                                                src="/images/star.png"
+                                                alt=""
+                                                key={i}
+                                            />
+                                        ))}
+                                    <span>({data?.res.starNumber})</span>
+                                </div>
                             </div>
                         )}
                         <Slide
@@ -476,28 +467,22 @@ const Gig = () => {
                                     />
                                     <div className="info">
                                         <span>{dataUser?.res.username}</span>
-                                        {!isNaN(
-                                            data?.res.totalStars /
-                                                data?.res.starNumber
-                                        ) && (
-                                            <div className="stars">
-                                                {Array(5)
-                                                    .fill()
-                                                    .map((item, i) => (
-                                                        <img
-                                                            src="/images/star.png"
-                                                            alt=""
-                                                            key={i}
-                                                        />
-                                                    ))}
-                                                <span>
-                                                    {Math.round(
-                                                        data?.res.totalStars /
-                                                            data?.res.starNumber
-                                                    )}
-                                                </span>
-                                            </div>
-                                        )}
+
+                                        <div className="stars">
+                                            {Array(data?.res.totalStars)
+                                                .fill()
+                                                .map((item, i) => (
+                                                    <img
+                                                        src="/images/star.png"
+                                                        alt=""
+                                                        key={i}
+                                                    />
+                                                ))}
+                                            <span>
+                                                ({data?.res.starNumber})
+                                            </span>
+                                        </div>
+
                                         <button>Contact Me</button>
                                     </div>
                                 </div>
@@ -545,7 +530,7 @@ const Gig = () => {
                                 </div>
                             </div>
                         )}
-                        {/* <Reviews gigId={id} /> */}
+                        <Reviews gigId={id} />
                     </div>
                     <div className="right">
                         <div className="price">

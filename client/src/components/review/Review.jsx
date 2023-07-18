@@ -11,7 +11,7 @@ const Review = ({ review }) => {
                 return res.data;
             }),
     });
-    console.log(data);
+
     return (
         <div className="review">
             {isLoading ? (
